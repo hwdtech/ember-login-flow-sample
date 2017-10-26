@@ -4,5 +4,9 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 export default Route.extend(ApplicationRouteMixin, {
   redirect() {
     this.transitionTo('protected');
+  },
+
+  sessionInvalidated() {
+    this.transitionTo('index');
   }
 });

@@ -6,7 +6,7 @@
   onClose=(action "onCancel")
 }}
   {{#if errorMessage}}
-    <p>Error occured: {{errorMessage}}</p>
+    <p data-error-message>Error occured: {{errorMessage}}</p>
   {{/if}}
   {{login-form onSubmit=(action "onSubmit") onCancel=(action "onCancel")}}
 {{/modal-dialog}}

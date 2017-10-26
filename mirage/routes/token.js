@@ -21,3 +21,7 @@ export function createToken(schema, request) {
     }
   );
 }
+
+export function revokeToken() {
+  return new Response(204);
+}
