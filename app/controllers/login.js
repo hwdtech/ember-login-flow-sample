@@ -9,7 +9,7 @@ export default Controller.extend({
     async onSubmit(payload) {
       try {
         await get(this, 'authenticator').authenticate(
-          payload.identification,
+          payload.identity,
           payload.password
         );
       } catch (authError) {

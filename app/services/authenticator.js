@@ -4,11 +4,11 @@ import EmberObject, { get } from '@ember/object';
 export default Service.extend({
   session: inject(),
 
-  async authenticate(identification, password) {
+  async authenticate(identity, password) {
     try {
-      return get(this, 'session').authenticate(
+      await get(this, 'session').authenticate(
         'authenticator:application',
-        identification,
+        identity,
         password
       );
     } catch (reason) {
