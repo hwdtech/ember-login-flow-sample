@@ -5,5 +5,8 @@
   clickOutsideToClose=true
   onClose=(action "onCancel")
 }}
+  {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+  {{/if}}
   {{login-form onSubmit=(action "onSubmit") onCancel=(action "onCancel")}}
 {{/modal-dialog}}

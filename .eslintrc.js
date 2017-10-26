@@ -16,6 +16,7 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': ['error', prettierConfig],
-    'ember/named-functions-in-promises': 'off'
+    'ember/named-functions-in-promises': 'off',
+    'ember/alias-model-in-controller': 'off'
   }
 };

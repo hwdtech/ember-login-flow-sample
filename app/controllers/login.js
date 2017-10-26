@@ -1,18 +1,28 @@
-/* eslint-disable ember/alias-model-in-controller */
-
 import Controller from '@ember/controller';
-import { debug } from '@ember/debug';
+import { inject } from '@ember/service';
+import { get, set } from '@ember/object';
 
 export default Controller.extend({
+  authenticator: inject(),
+
   actions: {
-    onSubmit(payload) {
-      debug(payload);
+    async onSubmit(payload) {
+      try {
+        await get(this, 'authenticator').authenticate(
+          payload.identification,
+          payload.password
+        );
+      } catch (authError) {
+        set(this, 'errorMessage', authError.toString());
+      }
     },
 
     onCancel() {
       this.transitionToRoute('application');
     }
+  },
+
+  reset() {
+    set(this, 'errorMessage', null);
   }
 });
-
-/* eslint-enable ember/alias-model-in-controller */
