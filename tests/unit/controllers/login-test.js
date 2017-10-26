@@ -13,12 +13,12 @@ test('it exists', function(assert) {
 });
 
 test('it should call authenticate service', function(assert) {
-  const identification = '123';
+  const identity = '123';
   const password = 'password';
 
   const AuthService = EmberObject.extend({
     authenticate(id, pass) {
-      assert.equal(id, identification);
+      assert.equal(id, identity);
       assert.equal(pass, password);
     }
   });
@@ -31,7 +31,7 @@ test('it should call authenticate service', function(assert) {
   let controller = this.subject();
 
   controller.send('onSubmit', {
-    identification,
+    identity,
     password
   });
 });
