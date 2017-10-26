@@ -1,0 +1,16 @@
+<fieldset>
+  <header>Login</header>
+  <p>
+    <label for="{{elementId}}-identification">Username</label>
+    <input id="{{elementId}}-identification" name="identity" placeholder="Enter username" onchange={{action (mut identity) value="target.value"}}>
+  </p>
+  <p>
+    <label for="{{elementId}}-password">Password</label>
+    <input id="{{elementId}}-password" type="password" name="password" placeholder="Enter password" onchange={{action (mut password) value="target.value"}}>
+  </p>
+</fieldset>
+<p>
+  <button type="submit" {{action "onSubmit"}}>Login</button>
+  <button type="reset" {{action "onCancel"}}>Cancel</button>
+</p>
+

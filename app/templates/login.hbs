@@ -2,6 +2,8 @@
   translucentOverlay=true
   overlayPosition="sibling"
   animatable=true
+  clickOutsideToClose=true
+  onClose=(action "onCancel")
 }}
-  <h1>Log me in!</h1>
+  {{login-form onSubmit=(action "onSubmit") onCancel=(action "onCancel")}}
 {{/modal-dialog}}
