@@ -1,9 +1,16 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'auth-flow/tests/helpers/module-for-acceptance';
 import { visit, currentURL, click } from 'ember-native-dom-helpers';
-import { authenticateSession } from 'auth-flow/tests/helpers/ember-simple-auth';
+import {
+  authenticateSession,
+  invalidateSession
+} from 'auth-flow/tests/helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | logout flow');
+moduleForAcceptance('Acceptance | logout flow', {
+  afterEach() {
+    return invalidateSession(this.application);
+  }
+});
 
 test('user should be able to logout', async function(assert) {
   await authenticateSession(this.application, {

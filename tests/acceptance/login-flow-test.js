@@ -7,8 +7,13 @@ import {
   click,
   find
 } from 'ember-native-dom-helpers';
+import { invalidateSession } from 'auth-flow/tests/helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | login flow');
+moduleForAcceptance('Acceptance | login flow', {
+  afterEach() {
+    return invalidateSession(this.application);
+  }
+});
 
 test('user should be able to login', async function(assert) {
   await visit('/login');
