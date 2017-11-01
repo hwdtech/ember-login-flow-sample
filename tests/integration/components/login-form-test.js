@@ -10,10 +10,10 @@ test('it renders', function(assert) {
   this.render(hbs`{{login-form}}`);
 
   assert.ok(find('form'));
-  assert.ok(find('input[name=identity]'));
-  assert.ok(find('input[name=password]'));
-  assert.ok(find('button[type=submit]'));
-  assert.ok(find('button[type=reset]'));
+  assert.ok(find('[data-test-username]'));
+  assert.ok(find('[data-test-password]'));
+  assert.ok(find('[data-test-login-button]'));
+  assert.ok(find('[data-test-reset-button]'));
 });
 
 test('it should handle submit', async function(assert) {
@@ -29,9 +29,9 @@ test('it should handle submit', async function(assert) {
 
   this.render(hbs`{{login-form onSubmit=onSubmit}}`);
 
-  await fillIn('input[name=identity]', identity);
-  await fillIn('input[name=password]', password);
-  await click('button[type=submit]');
+  await fillIn(find('[data-test-username]'), identity);
+  await fillIn(find('[data-test-password]'), password);
+  await click(find('[data-test-login-button]'));
 });
 
 test('it should handle cancel', async function(assert) {
@@ -41,5 +41,5 @@ test('it should handle cancel', async function(assert) {
 
   this.render(hbs`{{login-form onCancel=onCancel}}`);
 
-  await click('button[type=reset]');
+  await click(find('[data-test-reset-button]'));
 });

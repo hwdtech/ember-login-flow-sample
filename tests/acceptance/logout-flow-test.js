@@ -1,6 +1,6 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'auth-flow/tests/helpers/module-for-acceptance';
-import { visit, currentURL, click } from 'ember-native-dom-helpers';
+import { visit, currentURL, click, find } from 'ember-native-dom-helpers';
 import {
   authenticateSession,
   invalidateSession
@@ -19,7 +19,7 @@ test('user should be able to logout', async function(assert) {
   });
 
   await visit('/protected');
-  await click('[data-logout-button]');
+  await click(find('[data-test-logout-button]'));
 
   assert.equal(currentURL(), '/');
 });

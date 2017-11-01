@@ -17,9 +17,9 @@ moduleForAcceptance('Acceptance | login flow', {
 
 test('user should be able to login', async function(assert) {
   await visit('/login');
-  await fillIn('form input[name=identity]', 'user');
-  await fillIn('form input[name=password]', 'password');
-  await click('form button[type=submit]');
+  await fillIn(find('[data-test-username]'), 'user');
+  await fillIn(find('[data-test-password]'), 'password');
+  await click(find('[data-test-login-button]'));
 
   assert.equal(currentURL(), '/protected');
 });
@@ -28,9 +28,9 @@ test('user should see error message about invalid credentials', async function(
   assert
 ) {
   await visit('/login');
-  await fillIn('form input[name=identity]', 'admin');
-  await fillIn('form input[name=password]', 'password');
-  await click('form button[type=submit]');
+  await fillIn(find('[data-test-username]'), 'admin');
+  await fillIn(find('[data-test-password]'), 'password');
+  await click(find('[data-test-login-button]'));
 
   assert.ok(find('[data-error-message]').textContent);
 });
