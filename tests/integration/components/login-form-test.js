@@ -11,10 +11,10 @@ test('it renders', function(assert) {
   this.render(hbs`{{login-form}}`);
 
   assert.ok(find('form'));
-  assert.ok(testSelector('username'));
-  assert.ok(testSelector('password'));
-  assert.ok(testSelector('login-button'));
-  assert.ok(testSelector('reset-button'));
+  assert.ok(find(testSelector('username')));
+  assert.ok(find(testSelector('password')));
+  assert.ok(find(testSelector('login-button')));
+  assert.ok(find(testSelector('reset-button')));
 });
 
 test('it should handle submit', async function(assert) {

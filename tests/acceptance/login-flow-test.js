@@ -1,6 +1,12 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'auth-flow/tests/helpers/module-for-acceptance';
-import { visit, currentURL, fillIn, click } from 'ember-native-dom-helpers';
+import {
+  visit,
+  currentURL,
+  fillIn,
+  click,
+  find
+} from 'ember-native-dom-helpers';
 import { invalidateSession } from 'auth-flow/tests/helpers/ember-simple-auth';
 import testSelector from 'auth-flow/tests/helpers/test-selector';
 
@@ -27,5 +33,5 @@ test('user should see error message about invalid credentials', async function(
   await fillIn(testSelector('password'), 'password');
   await click(testSelector('login-button'));
 
-  assert.ok(testSelector('error-message').textContent);
+  assert.ok(find(testSelector('error-message')).textContent);
 });
