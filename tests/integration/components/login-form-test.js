@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import { click, fillIn, find } from 'ember-native-dom-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import testSelector from 'auth-flow/tests/helpers/test-selector';
 
 moduleForComponent('login-form', 'Integration | Component | login form', {
   integration: true
@@ -10,10 +11,10 @@ test('it renders', function(assert) {
   this.render(hbs`{{login-form}}`);
 
   assert.ok(find('form'));
-  assert.ok(find('[data-test-username]'));
-  assert.ok(find('[data-test-password]'));
-  assert.ok(find('[data-test-login-button]'));
-  assert.ok(find('[data-test-reset-button]'));
+  assert.ok(testSelector('username'));
+  assert.ok(testSelector('password'));
+  assert.ok(testSelector('login-button'));
+  assert.ok(testSelector('reset-button'));
 });
 
 test('it should handle submit', async function(assert) {
@@ -29,9 +30,9 @@ test('it should handle submit', async function(assert) {
 
   this.render(hbs`{{login-form onSubmit=onSubmit}}`);
 
-  await fillIn(find('[data-test-username]'), identity);
-  await fillIn(find('[data-test-password]'), password);
-  await click(find('[data-test-login-button]'));
+  await fillIn(testSelector('username'), identity);
+  await fillIn(testSelector('password'), password);
+  await click(testSelector('login-button'));
 });
 
 test('it should handle cancel', async function(assert) {
@@ -41,5 +42,5 @@ test('it should handle cancel', async function(assert) {
 
   this.render(hbs`{{login-form onCancel=onCancel}}`);
 
-  await click(find('[data-test-reset-button]'));
+  await click(testSelector('reset-button'));
 });
