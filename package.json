@@ -41,6 +41,7 @@
     "ember-resolver": "^4.0.0",
     "ember-simple-auth": "^1.4.0",
     "ember-source": "~2.16.0",
+    "ember-test-selectors": "^0.3.7",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-ember": "^4.5.0",
     "eslint-plugin-prettier": "^2.3.1",

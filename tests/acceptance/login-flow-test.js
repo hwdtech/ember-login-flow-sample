@@ -8,6 +8,7 @@ import {
   find
 } from 'ember-native-dom-helpers';
 import { invalidateSession } from 'auth-flow/tests/helpers/ember-simple-auth';
+import testSelector from 'auth-flow/tests/helpers/test-selector';
 
 moduleForAcceptance('Acceptance | login flow', {
   afterEach() {
@@ -17,9 +18,9 @@ moduleForAcceptance('Acceptance | login flow', {
 
 test('user should be able to login', async function(assert) {
   await visit('/login');
-  await fillIn('form input[name=identity]', 'user');
-  await fillIn('form input[name=password]', 'password');
-  await click('form button[type=submit]');
+  await fillIn(testSelector('username'), 'user');
+  await fillIn(testSelector('password'), 'password');
+  await click(testSelector('login-button'));
 
   assert.equal(currentURL(), '/protected');
 });
@@ -28,9 +29,9 @@ test('user should see error message about invalid credentials', async function(
   assert
 ) {
   await visit('/login');
-  await fillIn('form input[name=identity]', 'admin');
-  await fillIn('form input[name=password]', 'password');
-  await click('form button[type=submit]');
+  await fillIn(testSelector('username'), 'admin');
+  await fillIn(testSelector('password'), 'password');
+  await click(testSelector('login-button'));
 
-  assert.ok(find('[data-error-message]').textContent);
+  assert.ok(find(testSelector('error-message')).textContent);
 });
