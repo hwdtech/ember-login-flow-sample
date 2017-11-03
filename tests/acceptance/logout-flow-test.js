@@ -1,11 +1,11 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'auth-flow/tests/helpers/module-for-acceptance';
-import { visit, currentURL, click } from 'ember-native-dom-helpers';
-import testSelector from 'auth-flow/tests/helpers/test-selector';
+import { currentURL } from 'ember-native-dom-helpers';
 import {
   authenticateSession,
   invalidateSession
 } from 'auth-flow/tests/helpers/ember-simple-auth';
+import ProtectedPage from '../pages/protected-page';
 
 moduleForAcceptance('Acceptance | logout flow', {
   afterEach() {
@@ -18,9 +18,8 @@ test('user should be able to logout', async function(assert) {
     username: 'user',
     password: 'password'
   });
-
-  await visit('/protected');
-  await click(testSelector('logout-button'));
+  await ProtectedPage.visit();
+  await ProtectedPage.clickLogoutButton();
 
   assert.equal(currentURL(), '/');
 });

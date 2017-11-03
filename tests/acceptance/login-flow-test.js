@@ -1,15 +1,8 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'auth-flow/tests/helpers/module-for-acceptance';
-import {
-  visit,
-  currentURL,
-  fillIn,
-  click,
-  find
-} from 'ember-native-dom-helpers';
+import { currentURL } from 'ember-native-dom-helpers';
 import { invalidateSession } from 'auth-flow/tests/helpers/ember-simple-auth';
-import testSelector from 'auth-flow/tests/helpers/test-selector';
-
+import LoginPage from '../pages/login-page';
 moduleForAcceptance('Acceptance | login flow', {
   afterEach() {
     return invalidateSession(this.application);
@@ -17,10 +10,10 @@ moduleForAcceptance('Acceptance | login flow', {
 });
 
 test('user should be able to login', async function(assert) {
-  await visit('/login');
-  await fillIn(testSelector('username'), 'user');
-  await fillIn(testSelector('password'), 'password');
-  await click(testSelector('login-button'));
+  await LoginPage.visit();
+  await LoginPage.username('user');
+  await LoginPage.password('password');
+  await LoginPage.clickLoginButton();
 
   assert.equal(currentURL(), '/protected');
 });
@@ -28,10 +21,10 @@ test('user should be able to login', async function(assert) {
 test('user should see error message about invalid credentials', async function(
   assert
 ) {
-  await visit('/login');
-  await fillIn(testSelector('username'), 'admin');
-  await fillIn(testSelector('password'), 'password');
-  await click(testSelector('login-button'));
+  await LoginPage.visit();
+  await LoginPage.username('admin');
+  await LoginPage.password('password');
+  await LoginPage.clickLoginButton();
 
-  assert.ok(find(testSelector('error-message')).textContent);
+  assert.ok(LoginPage.errorsText());
 });
