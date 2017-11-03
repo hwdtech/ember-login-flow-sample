@@ -14,6 +14,13 @@ export default Service.extend({
     } catch (reason) {
       throw AuthenticationError.create({ reason });
     }
+  },
+  async invalidate() {
+    try {
+      await get(this, 'session').invalidate('authenticator:application');
+    } catch (reason) {
+      throw AuthenticationError.create({ reason });
+    }
   }
 });
 
