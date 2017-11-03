@@ -1,12 +1,16 @@
 import Controller from '@ember/controller';
-import { get } from '@ember/object';
+import { get, set } from '@ember/object';
 import { inject } from '@ember/service';
 
 export default Controller.extend({
-  session: inject(),
+  authenticator: inject(),
   actions: {
-    logout() {
-      return get(this, 'session').invalidate();
+    async logout() {
+      try {
+        await get(this, 'authenticator').invalidate();
+      } catch (authError) {
+        set(this, 'errorMessage', authError.toString());
+      }
     }
   }
 });
