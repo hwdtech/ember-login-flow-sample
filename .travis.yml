@@ -1,10 +1,6 @@
----
 language: node_js
 node_js:
-  - "6"
-
-sudo: false
-dist: trusty
+  - "8"
 
 addons:
   chrome: stable
@@ -12,7 +8,6 @@ addons:
 cache:
   directories:
     - $HOME/.npm
-
 env:
   global:
     # See https://git.io/vdao3 for details.
@@ -20,3 +15,6 @@ env:
 
 before_install:
   - npm config set spin false
+
+script:
+  - npm run ci

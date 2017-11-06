@@ -15,7 +15,9 @@
     "start": "ember server",
     "test": "ember test",
     "precommit": "lint-staged",
-    "prepush": "npm test"
+    "prepush": "npm test",
+    "ci": "npm run lint && npm test",
+    "lint":"./node_modules/.bin/eslint ./* --fix"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
