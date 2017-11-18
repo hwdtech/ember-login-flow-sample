@@ -13,17 +13,19 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test",
+    "test": "coverage=true ember test",
     "precommit": "lint-staged",
     "prepush": "npm test",
     "ci": "npm run lint && npm test",
-    "lint":"./node_modules/.bin/eslint ./* --fix"
+    "lint": "./node_modules/.bin/eslint ./* --fix",
+    "log":"node ./showResults"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
     "ember-cli": "~2.16.2",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
+    "ember-cli-code-coverage": "^0.4.2",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.0.0",
     "ember-cli-htmlbars": "^2.0.1",

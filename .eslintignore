@@ -6,3 +6,5 @@ tmp
 dist
 LICENSE
 README.md
+coverage
+config/coverage.js
