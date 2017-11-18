@@ -1,0 +1,10 @@
+node_modules
+bower_components
+package.json
+package-lock.json
+tmp
+dist
+LICENSE
+README.md
+coverage
+config/coverage.js
